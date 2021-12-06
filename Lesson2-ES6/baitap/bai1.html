@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai1</title>
+</head>
+
+<body>
+    <h3 id="result"></h3>
+
+    <script>
+        let result = document.getElementById("result");
+
+        const birds = [
+            { 'id': "DV8", 'name': "Eurasian Collared-Dove", 'type': "Dove" },
+            { 'id': "HK12", 'name': "Bald Eagle", 'type': "Hawk" },
+            { 'id': "HK6", 'name': "Cooper's Hawk", 'type': "Hawk" },
+            { 'id': "SP11", 'name': "Bell's Sparrow", 'type': "Sparrow" },
+            { 'id': "DV2", 'name': "Mourning Dove", 'type': "Dove" }
+        ];
+
+        let birdsArr = birds.map((bird) => {bird.id;})
+
+        result.innerHTML = birdsArr;
+
+    </script>
+</body>
+
+</html>

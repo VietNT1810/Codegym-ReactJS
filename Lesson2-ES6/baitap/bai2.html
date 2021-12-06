@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai2</title>
+</head>
+
+<body>
+    <label for="add">Add animal: </label>
+    <input type="text" id="add">
+    <button id="addBtn">Add</button>
+    <br><br>
+    <label for="check">Check animal: </label>
+    <input type="text" id="check">
+    <button id="checkBtn">Check</button>
+    <br><br>
+    <label for="delete">Delete animal: </label>
+    <input type="text" id="delete">
+    <button id="deleteBtn">Delete</button>
+    <br><br>
+    <button id="listAnimals">List</button>
+
+    <h1 id="list"></h1>
+
+    <script>
+        const animals = new Set();
+        const addBtn = document.getElementById("addBtn");
+        const checkBtn = document.getElementById("checkBtn");
+        const deleteBtn = document.getElementById("deleteBtn");
+        const listBtn = document.getElementById("listAnimals");
+
+        //Add
+        addBtn.onclick = () => {
+            let animalAdd = document.getElementById("add").value;
+            if (animals.has(animalAdd)) {
+                alert('Already in the list')
+            } else {
+                animals.add(animalAdd);
+            }
+            animalAdd = '';
+        }
+
+        //Check
+        checkBtn.onclick = () => {
+            let animalCheck = document.getElementById("check").value;
+            if (animals.has(animalCheck)) {
+                alert('Has in the list');
+            } else {
+                alert(`Doesn't have in the list`)
+            }
+            animalCheck = '';
+        }
+
+        //Delete
+        deleteBtn.onclick = () => {
+            let animalDelete = document.getElementById("delete").value;
+            if (animals.has(animalDelete)) {
+                animals.delete(animalDelete);
+            } else {
+                alert(`The animal not in the list`)
+            }
+        }
+
+        //List
+        listBtn.onclick = () => {
+            let animalsArray = [...animals];
+            document.getElementById("list").innerHTML = animalsArray;
+        }
+    </script>
+</body>
+
+</html>
