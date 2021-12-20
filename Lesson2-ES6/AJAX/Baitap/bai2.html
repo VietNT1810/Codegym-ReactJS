@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id='city' placeholder="Weather in your city" pattern="[a-zA-Z]" required>
+    <button onclick="getData()">Search</button>
+
+    <div id="info"></div>
+
+    <script>
+        let inputEl = document.getElementById('city');
+        let weatherInfo = document.getElementById('info');
+        let inputValue;
+        function getData() {
+            let inputValue = inputEl.value;
+
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue || 'hanoi'}&appid=759e880cfc193ac85da97b051161fb98`)
+                .then(function (response) {
+                    console.log(response.data)
+                    let responseData = response.data;
+                    weatherInfo.innerHTML = `
+                        <h1>${responseData.name}, ${responseData.sys.country}</h1>
+                        <h2>Temperature: ${Math.floor(responseData.main.temp - 272.15)} ℃</h2>
+                        <h3>Weather: ${responseData.weather[0].description}</h3>
+                        <h3>Humidity: ${responseData.main.humidity}%</h3>
+                    `
+                })
+
+                .catch(function (error) {
+                    console.log(error)
+                })
+        }
+        getData();
+
+    </script>
+</body>
+
+</html>

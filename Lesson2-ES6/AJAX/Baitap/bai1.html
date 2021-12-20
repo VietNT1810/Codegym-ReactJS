@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Xây dựng ứng dụng tìm ảnh động vui nhộn</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>GIPHY PARTY</h1>
+        <input type="text" placeholder="Enter a search term" id="input">
+        <button onclick="requestData()">Search Giphy!</button>
+        <button onclick="removeData()">Remove Gif</button>
+        <div id="list-gif"></div>
+    </div>
+
+    <script>
+        let inputEl = document.getElementById('input');
+        let listGif = document.getElementById('list-gif');
+
+        function requestData() {
+            let inputValue = inputEl.value;
+
+            // get data from api
+            var request = $.ajax({
+                url: 'http://api.giphy.com/v1/gifs/search',
+                method: 'GET',  
+                data: { q: `${inputValue}`, api_key: 'Su5MrCQddDwvDjJBigQ4ilP5YkHdaFRm' },
+                dataType: 'json'
+            });
+
+            request.done(function (response) {
+                let randomIndex = Math.floor(Math.random() * response.data.length);
+                let gifData = response.data[randomIndex].images.original.url;
+                listGif.innerHTML += `<img src="${gifData}" alt="abc" height="300"/>`;
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                console.log('Request failed: ' + textStatus);
+            })
+
+            //clear input field
+            inputEl.value = '';
+
+        }
+        
+        function removeData() {
+            listGif.innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td,th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const students = [
+            {
+                company: 'Alfreds Futterkiste',
+                contact: 'Maria Anders',
+                country: 'Germany'
+            },
+            {
+                company: 'Centro comercial Moctezuma',
+                contact: 'Francisco Chang',
+                country: 'Mexico'
+            },
+            {
+                company: 'Ernst Handel',
+                contact: 'Roland Mendel',
+                country: 'Austria'
+            },
+            {
+                company: 'Island Trading',
+                contact: 'Helen Bennett',
+                country: 'UK'
+            },
+            {
+                company: 'Laughing Bacchus Winecellars',
+                contact: 'Yoshi Tannamuri',
+                country: 'Canada'
+            },
+            {
+                company: 'Magazzini Alimentari Riuniti',
+                contact: 'Giovanni Rovelli',
+                country: 'Italy'
+            }
+        ]
+
+        ReactDOM.render(
+            <div>
+                <h2>Students</h2>
+                <table border={1}>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Contact</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {students.map((student, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{student.company}</td>
+                                    <td>{student.contact}</td>
+                                    <td>{student.country}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>

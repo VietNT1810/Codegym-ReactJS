@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Gif</title>
+</head>
+
+<body>
+    <h1>GIPHY PARTY</h1>
+    <input type="text" placeholder="Enter a search term" id="input">
+    <button onclick="requestData()">Search Giphy!</button>
+    <button onclick="removeData()">Remove Gif</button>
+    <div id="list-gif"></div>
+
+    <script>
+        let inputEl = document.getElementById('input');
+        let listGif = document.getElementById('list-gif');
+
+        function requestData() {
+            let inputValue = inputEl.value;
+
+            axios.get(`http://api.giphy.com/v1/gifs/search?q=${inputValue}&api_key=Su5MrCQddDwvDjJBigQ4ilP5YkHdaFRm`)
+                .then(function (response) {
+                    let randomIndex = Math.floor(Math.random() * response.data.data.length);
+                    // console.log(response.data.data[0].images.original);
+
+                    let gifData = response.data.data[randomIndex].images.original.url;
+                    console.log(gifData);
+                    
+                    listGif.innerHTML += `<img src="${gifData}" alt="abc" height="300"/>`;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
+
+        function removeData() {
+            listGif.innerHTML = '';
+        }
+
+    </script>
+</body>
+
+</html>
