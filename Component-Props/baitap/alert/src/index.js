@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Welcome from './components/Welcome'
-import AddComponent from "./components/AddComponent";
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
+const Alert = (props) => {
+  return (
+    <p className="alert alert-primary" role="alert">{props.text}</p>
+  );
+}
 
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
-ReactDOM.render(<Welcome name="Viet"/>,document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <Alert text='This is a primary alert—check it out!'/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
