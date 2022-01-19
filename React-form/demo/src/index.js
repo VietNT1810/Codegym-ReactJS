@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import EffectDemo from './components/EffectDemo'
-import UseState from './components/UseState'
-import UseClock from './components/UseClock'
+// import MyForm from './components/Demo1'
+// import MyForm from './components/Demo2'
+// import MyForm from './components/Demo3'
+// import MyForm from './components/Demo4'
+import MyForm from './components/Demo5'
+import ValidationSchemaExample from './components/DemoFormik'
+import SignupForm from './components/SignupForm'
 
 ReactDOM.render(
   <React.StrictMode>
-    <UseClock />
+    <SignupForm />
   </React.StrictMode>,
   document.getElementById('root')
 );

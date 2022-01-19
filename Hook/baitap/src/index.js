@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import EffectDemo from './components/EffectDemo'
-import UseState from './components/UseState'
-import UseClock from './components/UseClock'
+import Hello from './components/Hello';
+import Login from './components/Login'
 
 ReactDOM.render(
   <React.StrictMode>
-    <UseClock />
+    <Login />
   </React.StrictMode>,
   document.getElementById('root')
 );
